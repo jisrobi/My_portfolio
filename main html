@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Name - Portfolio</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"> <!-- Font Awesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css"> <!-- Slick Carousel CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css"> <!-- AOS CSS -->
+    <link rel="stylesheet" href="style.css"><!-- style -->
+   
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="#about">About Me</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#resume">Resume</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+
+        <div class="header-content">
+            <img src="WhatsApp Image 2024-07-08 at 10.45.51_419fe908.jpg" alt="Robiul Hasan Jisan" class="circular-image" id="profileImage">
+            <h1>Hi, I'm Robiul Hasan Jisan. I'm a University Student.</h1>
+        </div>
+    </header>
+
+    <!-- Image overlay -->
+    <div class="image-overlay" id="imageOverlay">
+        <span class="close-overlay" id="closeOverlay">&times;</span>
+        <img src="WhatsApp Image 2024-07-08 at 10.45.51_419fe908.jpg" alt="Robiul Hasan Jisan">
+    </div>
+
+    <section id="about" data-aos="fade-up" data-background="light-red-yellow">
+        <h2>About Me</h2>
+        <p>I am a passionate university student with an interest in technology and software development. I enjoy working on various projects that challenge my skills and expand my knowledge.</p>
+    </section>
+
+    <section id="projects" data-aos="fade-up" data-background="dark-blue-light-blue">
+        <h2>Projects</h2>
+       
+            <div><img src="project1.jpg" alt="Project 1"></div>
+            <div><img src="project2.jpg" alt="Project 2"></div>
+            <div><img src="project3.jpg" alt="Project 3"></div>
+       
+    </section>
+
+    <section id="skills" data-aos="fade-up" data-background="light-red-yellow">
+        <h2>Skills</h2>
+        <p>Here are some of the skills I've acquired:</p>
+        <ul>
+            <li>JavaScript</li>
+            <li>Python</li>
+            <li>HTML & CSS</li>
+            <!-- Add more skills as needed -->
+        </ul>
+    </section>
+
+    <section id="resume" data-aos="fade-up" data-background="dark-blue-light-blue">
+        <h2>Resume</h2>
+        <a href="path/to/your/resume.pdf" download>Download My Resume</a>
+    </section>
+
+    <section id="contact" data-aos="fade-up" data-background="light-red-yellow">
+        <h2>Contact</h2>
+        <form>
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email">
+            <label for="message">Message</label>
+            <textarea id="message" name="message"></textarea>
+            <button type="submit">Send</button>
+        </form>
+
+        <div class="social-media">
+            <a href="https://www.facebook.com/robiulhasa88/" target="_blank" title="Facebook"><i class="fab fa-facebook"></i></a>
+            <a href="https://www.instagram.com/robiulhasa88/" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.linkedin.com/in/robiul-hasan-45766228b/" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+            <a href="https://codeforces.com/profile/iamrobiulhasanjisan" target="_blank" title="Codeforces"><i class="fab fa-codeforces"></i></a>
+            <a href="https://www.codechef.com/users/iamrobiulhasan" target="_blank" title="CodeChef"><i class="fab fa-codechef"></i></a>
+            <a href="https://github.com/jisrobi" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+        </div>
+    </section>
+
+    <div class="parallax">
+        <h2>Welcome to My Portfolio</h2>
+    </div>
+
+    <!-- Include jQuery -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <!-- Include Slick Carousel JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
+    <!-- Include AOS JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script>
+        $(document).ready(function(){
+            $('.carousel').slick({
+                dots: true,
+                infinite: true,
+                speed: 500,
+                fade: true,
+                cssEase: 'linear'
+            });
+
+            // Initialize AOS
+            AOS.init();
+
+            // Image click effect
+            const profileImage = document.getElementById('profileImage');
+            const imageOverlay = document.getElementById('imageOverlay');
+            const closeOverlay = document.getElementById('closeOverlay');
+
+            profileImage.addEventListener('click', () => {
+                imageOverlay.classList.add('active');
+            });
+
+            closeOverlay.addEventListener('click', () => {
+                imageOverlay.classList.remove('active');
+            });
+
+            // Hide overlay when clicking outside the image
+            imageOverlay.addEventListener('click', (e) => {
+                if (e.target === imageOverlay) {
+                    imageOverlay.classList.remove('active');
+                }
+            });
+
+            // Smooth scrolling for section
+            $('a[href^="#"]').on('click', function(event) {
+                event.preventDefault();
+
+                const target = $(this.getAttribute('href'));
+
+                if (target.length) {
+                    $('html, body').stop().animate({
+                        scrollTop: target.offset().top
+                    }, 1000);
+                }
+            });
+
+            // Add slide-in effect for sections
+            $(window).on('scroll', function() {
+                $('.slide-in').each(function() {
+                    const sectionTop = $(this).offset().top;
+                    const windowBottom = $(window).scrollTop() + $(window).height();
+
+                    if (sectionTop < windowBottom) {
+                        $(this).addClass('slide-in');
+                    }
+                });
+            }).trigger('scroll');
+
+            // Change background color based on section
+            $(window).on('scroll', function() {
+                const scrollPos = $(window).scrollTop();
+
+                $('section').each(function() {
+                    const sectionTop = $(this).offset().top;
+                    const sectionHeight = $(this).height();
+
+                    if (scrollPos >= sectionTop && scrollPos < sectionTop + sectionHeight) {
+                        const bg = $(this).data('background');
+                        $('body').css('background', getBackgroundColor(bg));
+                    }
+                });
+            });
+
+            function getBackgroundColor(bg) {
+                switch(bg) {
+                    case 'light-red-yellow':
+                        return 'linear-gradient(135deg, lightcoral, lightyellow)';
+                    case 'dark-blue-light-blue':
+                        return 'linear-gradient(135deg, darkblue, lightblue)';
+                    default:
+                        return '';
+                }
+            }
+        });
+    </script>
+</body>
+</html>
